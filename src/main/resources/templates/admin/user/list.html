@@ -548,15 +548,16 @@
 
                 //选中角色
                 var userRole = [];
+                var roleId = [];
                 $("#distributionModal input[name='roleId']:checked").each(function(){
                     userRole.push({"uid": list.id, 'rid': $(this).val()})
+                    roleId.push({'rid': $(this).val()})
                 })
+
                 if (roleId.length <= 0) {
                     parent.layer.msg('请选择角色', {time: 1500, icon:5});
                     return;
                 }
-
-                var userRole = {"id": list.id, "userRoles":roleId}
 
                 $.ajax({
                     url: "/admin/role/modifyUserRole",
