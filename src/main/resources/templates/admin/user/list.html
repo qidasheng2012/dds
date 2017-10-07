@@ -61,6 +61,10 @@
                                 <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
                                 分配角色
                             </button>
+                            <button type="button" class="btn btn-outline btn-default" id="optionUserStatus">
+                                <i class="glyphicon glyphicon-edit" aria-hidden="true"></i>
+                                审核通过
+                            </button>
                             <button type="button" class="btn btn-outline btn-default" id="deleteButton">
                                 <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
                                 删除
@@ -263,6 +267,9 @@
                                 return '<span class="label label-danger">禁用</span>';
                             } else if (value == 1) {
                                 return '<span class="label label-primary">启用</span>';
+                            }
+                            else if (value == 5) {
+                                return '<span class="label label-primary">待审核</span>';
                             }
                             return "其他";
                         }
@@ -479,6 +486,38 @@
                     });
                 });
             }
+
+            $("#optionUserStatus").click(function () {
+                var $result = $('#userTableEvents');
+                var list = $result.bootstrapTable('getSelections');
+                if (list.length <= 0) {
+                    parent.layer.msg('请至少选中一条数据', {time: 1500, icon:5});
+                    return;
+                }
+
+                for (var item in list) {
+                    if(list[item].status != 5 ) {
+                        parent.layer.msg('请选择待审核用户', {time: 1500, icon:5});
+                        return;
+                    }
+                }
+
+                $.ajax({
+                    url: "/admin/user/optionUserStatus",
+                    data:  JSON.stringify(list),
+                    contentType: "application/json; charset=utf-8",
+                    type: "POST",
+                    dataType: 'json',
+                    success: function(data){
+                        if (data.success) {
+                            $('#userTableEvents').bootstrapTable('refresh');
+                            parent.layer.msg(data.msg, {icon: 1});
+                        } else {
+                            parent.layer.msg(data.msg, {time: 1500, icon:5});
+                        }
+                    }
+                });
+            });
 
             //删除用户
             $("#deleteButton").click(function () {

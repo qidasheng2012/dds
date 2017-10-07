@@ -101,6 +101,25 @@ public class UserController extends BaseController {
     }
 
     /**
+     * 审核用户
+     * @param users
+     * @return
+     */
+    @ResponseBody
+    @RequestMapping(value = "/optionUserStatus")
+    public JsonResult optionUserStatus(@RequestBody List<User> users) {
+        for (User user:users) {
+            user.setNickname(null);
+            user.setPassword(null);
+            user.setUsername(null);
+            user.setEmail(null);
+            user.setSalt(null);
+            user.setStatus(1);
+        }
+        return iUserService.updateBatchById(users) ? renderSuccess("审核成功") : renderError("审核失败");
+    }
+
+    /**
      * 删除用户
      * @param id
      * @return
