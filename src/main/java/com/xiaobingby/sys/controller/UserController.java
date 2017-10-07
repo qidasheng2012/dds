@@ -83,7 +83,7 @@ public class UserController extends BaseController {
     public JsonResult addUser(User user) {
         // 创建盐, 散列加密
         String salt = String.valueOf(System.currentTimeMillis());
-        SimpleHash password = new SimpleHash("MD5", user.getUsername(), salt);
+        SimpleHash password = new SimpleHash("MD5", user.getPassword(), salt);
         user.setSalt(salt);
         user.setPassword(password.toString());
         return  iUserService.insert(user) ? renderSuccess("添加成功") : renderError("添加失败");
