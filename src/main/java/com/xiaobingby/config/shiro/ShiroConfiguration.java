@@ -64,6 +64,11 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/500.html", "perms");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
         filterChainDefinitionMap.put("/admin/mylogin", "anon");
+        filterChainDefinitionMap.put("/admin/register.html", "anon"); // 注册界面
+        filterChainDefinitionMap.put("/admin/register", "anon"); // 注册提交数据
+        filterChainDefinitionMap.put("/admin/sencCode", "anon"); // 发送邮箱验证码
+        filterChainDefinitionMap.put("/admin/isUsername/**", "anon"); // 判断用户名是否存在
+        filterChainDefinitionMap.put("/admin/isEmail/**", "anon"); // 判断邮箱是否存在
 
         filterChainDefinitionMap.put("/**", "authc");
         /**
