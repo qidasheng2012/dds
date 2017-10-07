@@ -125,7 +125,7 @@ public class IndexController extends BaseController {
         user.setStatus(5); // 状态待审核
         // 创建盐, 散列加密
         String salt = String.valueOf(System.currentTimeMillis());
-        SimpleHash password = new SimpleHash("MD5", user.getUsername(), salt);
+        SimpleHash password = new SimpleHash("MD5", user.getPassword(), salt);
         user.setSalt(salt); // 设置盐
         user.setPassword(password.toString()); // 设置密码
         user.setNickname(user.getUsername()); // 设置昵称
