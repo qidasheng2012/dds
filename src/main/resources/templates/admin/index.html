@@ -74,7 +74,7 @@
                     <#list menus as menu>
                     <li>
                         <a href="#">
-                            <i class="fa fa-home"></i>
+                            <i class="${menu.icon!}"></i>
                             <span class="nav-label">${menu.name!}</span>
                             <#if (menu.children?size>0) >
                             <span class="fa arrow"></span>
@@ -84,7 +84,7 @@
                         <ul class="nav nav-second-level">
                             <#list menu.children as children>
                             <li>
-                                <a class="J_menuItem" href="${children.url!}">${children.name!}</a>
+                                <a class="J_menuItem" href="${children.url!}"><i class="${children.icon!}"></i>${children.name!}</a>
                             </li>
                             </#list>
                         </ul>
