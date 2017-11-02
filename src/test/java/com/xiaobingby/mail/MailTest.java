@@ -27,6 +27,7 @@ public class MailTest {
     @Test
     public void testMail() {
         SimpleMailMessage message = new SimpleMailMessage();
+        //13123
 
         message.setFrom("fanshuye1304@163.com");//发送者.
         message.setTo("867510022@qq.com");//接收者.
