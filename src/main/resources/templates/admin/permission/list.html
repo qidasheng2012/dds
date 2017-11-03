@@ -446,6 +446,8 @@
                             $("#addModal .pid").hide();
                             Menu.table.refresh();
                             parent.layer.msg(data.msg, {icon: 1});
+                        } else {
+                            parent.layer.msg(data.msg, {time: 1500, icon:5});
                         }
                     }
                 });
@@ -557,6 +559,8 @@
                             $("#updateModal").modal('hide');
                             Menu.table.refresh();
                             parent.layer.msg(data.msg, {icon: 1});
+                        } else {
+                            parent.layer.msg(data.msg, {time: 1500, icon:5});
                         }
                     }
                 });

@@ -325,6 +325,8 @@
                                 $("#addForm")[0].reset();
                                 $('#userTableEvents').bootstrapTable('refresh');
                                 parent.layer.msg(data.msg, {icon: 1});
+                            } else {
+                                parent.layer.msg(data.msg, {time: 1500, icon:5});
                             }
                         }
                     });
@@ -396,6 +398,8 @@
                                 $("#updateModal").modal('hide');
                                 $('#userTableEvents').bootstrapTable('refresh');
                                 parent.layer.msg(data.msg, {icon: 1});
+                            } else {
+                                parent.layer.msg(data.msg, {time: 1500, icon:5});
                             }
                         }
                     });
@@ -427,6 +431,8 @@
                             if (data.success) {
                                 $('#userTableEvents').bootstrapTable('refresh');
                                 parent.layer.msg(data.msg, {icon: 1});
+                            } else {
+                                parent.layer.msg(data.msg, {time: 1500, icon:5});
                             }
                         }
                     });
@@ -510,6 +516,8 @@
                         if (data.success) {
                             $("#alterPermissionModal").modal('hide');
                             arent.layer.msg(data.msg, {icon: 1});
+                        } else {
+                            parent.layer.msg(data.msg, {time: 1500, icon:5});
                         }
                     }
                 });
