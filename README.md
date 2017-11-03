@@ -47,3 +47,17 @@ zTree | 树插件 | http://www.treejs.cn/v3/
 Font-awesome | 字体图标 | http://fontawesome.io/
 H+ | 后台管理模板 | http://www.zi-han.net/theme/hplus/
 wangEditor | 轻量级web富文本编辑器 | http://www.wangeditor.com
+
+### 预览图片
+- 登陆
+![输入图片说明](https://gitee.com/uploads/images/2017/1104/004845_18a73aef_734677.png "01.png")
+- 注册
+![输入图片说明](https://gitee.com/uploads/images/2017/1104/004856_d525ec30_734677.png "02.png")
+- 后台首页
+![输入图片说明](https://gitee.com/uploads/images/2017/1104/004945_cc742cd1_734677.png "03.png")
+- 用户管理(CRUD)
+![输入图片说明](https://gitee.com/uploads/images/2017/1104/004908_22218ac6_734677.png "04.png")
+- 角色管理(CRUD)
+![输入图片说明](https://gitee.com/uploads/images/2017/1104/004916_5a1e6bec_734677.png "05.png")
+- 权限管理(CRUD)
+![输入图片说明](https://gitee.com/uploads/images/2017/1104/004953_d05814ea_734677.png "06.png")
