@@ -58,6 +58,15 @@ public class IndexController extends BaseController {
     }
 
     /**
+     * 主页预览
+     * @return
+     */
+    @RequestMapping(value = "/index_1")
+    public String index_1() {
+        return "/md";
+    }
+
+    /**
      * 登陆页面
      * @return
      */
