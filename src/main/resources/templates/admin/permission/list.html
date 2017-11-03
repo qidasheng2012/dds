@@ -175,7 +175,7 @@
     <div class="form-group pid">
         <label class="col-sm-2 control-label">上级菜单</label>
         <div class="col-sm-10">
-            <select class="form-control" name="pid">
+            <select class="form-control" id="pid" name="pid">
                 <option>1</option>
                 <option>2</option>
             </select>
@@ -458,7 +458,7 @@
             if (id == false) {
                 return false;
             }
-            var list = [];
+            list = [];
             $.ajax({
                 async:false,
                 url: "/admin/permission/getPermissionById",
@@ -622,6 +622,7 @@
                         domOption += "<option value='"+result[item].id+"'>"+result[item].name+"</option>";
                     }
                     $("#addModal select, #updateModal select").append(domOption);
+                    $("#updateModal #pid").val(list.pid);
                 });
             } else if (type == 1) {
                 $.get("/admin/permission/getTypePermission/1", function(result){
@@ -630,6 +631,7 @@
                         domOption += "<option value='"+result[item].id+"'>"+result[item].name+"</option>";
                     }
                     $("#addModal select, #updateModal select").append(domOption);
+                    $("#updateModal #pid").val(list.pid);
                 });
             }
         }
