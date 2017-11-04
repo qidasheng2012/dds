@@ -3,13 +3,14 @@
 > Bing-UPMS是一个轻量级的Spring Boot快速开发平台，学习简单、轻量级、易扩展；使用最新技术。
 
 ### **具有如下特点** 
+- RBAC权限管理 控制到按钮级权限
 - 友好的代码结构及注释，便于阅读及二次开发
 - 使用轻量级FreeMarker模板引擎，代替JSP
 - 灵活的权限控制，可控制到页面或按钮，满足绝大部分的权限需求
 - Bootstrap Table进行数据展示,快速完成前端数据展示
 - MP代码生成器模块,快速生成 entity、Mapper.xml、dao、service、controller 代码
 - 引入云存储服务，已支持：腾讯云COS对象存储
-- 通用CRUD操作,单表操作无需写任何SQL语句。把精力关注在多表操作，提高开发效率。
+- 通用CRUD操作,单表操作无需写任何SQL语句。把精力关注在多表操作，提高开发效率 （Mybatis-Plus）
 
 ### 数据库设计
 ![输入图片说明](https://gitee.com/uploads/images/2017/1104/004510_91f7d52d_734677.png "database.png")
