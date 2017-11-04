@@ -28,8 +28,6 @@ import java.util.List;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Autowired
-    private UserMapper userMapper;
-    @Autowired
     private UserRoleMapper userRoleMapper;
 
     @Override
@@ -38,7 +36,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         SimpleHash password = new SimpleHash("MD5", user.getUsername(), salt);
         user.setSalt(salt);
         user.setPassword(password.toString());
-        Integer result = userMapper.insert(user);
+        Integer result = baseMapper.insert(user);
         if (result >= 1) {
             return true;
         }
@@ -47,7 +45,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Override
     public boolean updateUser(User user) {
-        Integer result = userMapper.updateById(user);
+        Integer result = baseMapper.updateById(user);
         if (result >= 1) {
             return true;
         }
@@ -64,7 +62,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
             userId.add(item);
         }
         // 删除用户表数据
-        Integer integer = userMapper.deleteBatchIds(userId);
+        Integer integer = baseMapper.deleteBatchIds(userId);
 
         // 删除用户角色关联表数据
         EntityWrapper<UserRole> userRoleEntityWrapper = new EntityWrapper<>();

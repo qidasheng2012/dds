@@ -29,8 +29,6 @@ import java.util.List;
 public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IRoleService {
 
     @Autowired
-    private RoleMapper roleMapper;
-    @Autowired
     private RolePermissionMapper rolePermissionMapper;
     @Autowired
     private UserRoleMapper userRoleMapper;
@@ -47,7 +45,7 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
             userId.add(item);
         }
         // 删除角色表
-        Integer integer = roleMapper.deleteBatchIds(userId);
+        Integer integer = baseMapper.deleteBatchIds(userId);
 
         // 删除角权限关联表数据
         EntityWrapper<RolePermission> permissionEntityWrapper = new EntityWrapper<>();

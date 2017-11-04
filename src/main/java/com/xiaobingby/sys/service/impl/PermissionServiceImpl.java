@@ -30,8 +30,6 @@ import java.util.List;
 public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permission> implements IPermissionService {
 
     @Autowired
-    private PermissionMapper permissionMapper;
-    @Autowired
     private RolePermissionMapper rolePermissionMapper;
     @Autowired
     private IRolePermissionService iRolePermissionService;
@@ -42,7 +40,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         List<Menu> menus = new ArrayList<>();
 
         // 查询父菜单
-        List<Permission> parentMenu = permissionMapper.findParentMenu(uid);
+        List<Permission> parentMenu = baseMapper.findParentMenu(uid);
         parentMenu.forEach(p -> {
             Menu menu = new Menu();
             BeanUtils.copyProperties(p, menu);
@@ -52,7 +50,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         // 查询子菜单
         menus.forEach(m -> {
             List<Menu> temp = new ArrayList<>();
-            List<Permission> children = permissionMapper.findSubMenu(uid, m.getId());
+            List<Permission> children = baseMapper.findSubMenu(uid, m.getId());
             children.forEach(c -> {
                 Menu menu = new Menu();
                 BeanUtils.copyProperties(c, menu);
@@ -68,7 +66,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         // 查询所有权限列表
         EntityWrapper<Permission> permissionEntityWrapper = new EntityWrapper<>();
         permissionEntityWrapper.orderBy("sort", true);
-        List<Permission> permissions = permissionMapper.selectList(permissionEntityWrapper);
+        List<Permission> permissions = baseMapper.selectList(permissionEntityWrapper);
 
         // 查询角色拥有那些权限
         EntityWrapper<RolePermission> rolePermissionEntityWrapper = new EntityWrapper<>();
@@ -115,7 +113,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
         rolePermissionMapper.delete(rolePermissionEntityWrapper);
 
         // 删除权限表数据
-        Integer result = permissionMapper.deleteById(Long.valueOf(id));
+        Integer result = baseMapper.deleteById(Long.valueOf(id));
 
         return result >= 1 ? true : false;
     }
