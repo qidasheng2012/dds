@@ -27,7 +27,7 @@ public class RolePermission extends Model<RolePermission> {
     /**
      * 主键
      */
-	@TableId(value="id", type= IdType.AUTO)
+	@TableId(value="id")
 	private Long id;
     /**
      * 角色ID

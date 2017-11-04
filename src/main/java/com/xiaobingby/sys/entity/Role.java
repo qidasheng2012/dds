@@ -25,7 +25,7 @@ public class Role extends Model<Role> {
     /**
      * 主键
      */
-	@TableId(value="id", type= IdType.AUTO)
+	@TableId(value="id")
 	private Long id;
     /**
      * 角色名

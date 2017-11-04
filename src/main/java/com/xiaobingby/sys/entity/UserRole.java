@@ -27,7 +27,7 @@ public class UserRole extends Model<UserRole> {
     /**
      * 主键
      */
-	@TableId(value="id", type= IdType.AUTO)
+	@TableId(value="id")
 	private Long id;
     /**
      * 用户ID

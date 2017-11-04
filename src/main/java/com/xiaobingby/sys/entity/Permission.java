@@ -25,7 +25,7 @@ public class Permission extends Model<Permission> {
     /**
      * 主键
      */
-	@TableId(value="id", type= IdType.AUTO)
+	@TableId(value="id")
 	private Long id;
     /**
      * 上级ID
