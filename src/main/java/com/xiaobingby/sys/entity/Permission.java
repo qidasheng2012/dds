@@ -50,7 +50,6 @@ public class Permission extends Model<Permission> {
     /**
      * 权限编码
      */
-	@TableField("perm_code")
 	private String permCode;
     /**
      * 图标
@@ -67,12 +66,12 @@ public class Permission extends Model<Permission> {
     /**
      * 创建时间
      */
-	@TableField(value = "gmt_create", fill = FieldFill.INSERT)
+	@TableField(fill = FieldFill.INSERT)
 	private Date gmtCreate;
     /**
      * 修改时间
      */
-	@TableField(value = "gmt_modified", fill = FieldFill.INSERT_UPDATE)
+	@TableField(fill = FieldFill.INSERT_UPDATE)
 	private Date gmtModified;
 
 
