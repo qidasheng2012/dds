@@ -47,7 +47,7 @@
 		(
 		select rid from user_role INNER JOIN role on user_role.rid = role.id where uid = #{0} and status = 1
 		)
-		) and status = 1 and type = 1 or type = 2
+		) and status = 1 and type in (1,2)
 	</select>
 
 
