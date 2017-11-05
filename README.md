@@ -56,7 +56,7 @@ wangEditor | 轻量级web富文本编辑器 | http://www.wangeditor.com
 ![输入图片说明](https://gitee.com/uploads/images/2017/1104/004856_d525ec30_734677.png "02.png")
 - 后台首页
 ![输入图片说明](https://gitee.com/uploads/images/2017/1104/004945_cc742cd1_734677.png "03.png")
-- 用户管理(CRUD)
+- 用户管理(CRUD) (Demo 按钮权限)
 ![输入图片说明](https://gitee.com/uploads/images/2017/1105/154346_ba65799b_734677.png "用户管理(有权限用户).png")
 ![输入图片说明](https://gitee.com/uploads/images/2017/1105/154400_96b87c0a_734677.png "用户管理(无权限用户).png")
 - 角色管理(CRUD)
