@@ -2,6 +2,9 @@
 
 > Bing-UPMS是一个轻量级的Spring Boot快速开发平台，学习简单、轻量级、易扩展；使用最新技术。
 
+### DEMO
+> [Bing-UPMS DEMO](http://139.199.220.103)
+
 ### **具有如下特点** 
 - RBAC权限管理 控制到按钮级权限
 - 友好的代码结构及注释，便于阅读及二次开发
@@ -56,9 +59,12 @@ wangEditor | 轻量级web富文本编辑器 | http://www.wangeditor.com
 ![输入图片说明](https://gitee.com/uploads/images/2017/1104/004856_d525ec30_734677.png "02.png")
 - 后台首页
 ![输入图片说明](https://gitee.com/uploads/images/2017/1104/004945_cc742cd1_734677.png "03.png")
-- 用户管理(CRUD)
-![输入图片说明](https://gitee.com/uploads/images/2017/1104/004908_22218ac6_734677.png "04.png")
+- 用户管理(CRUD) (Demo 按钮权限)
+![输入图片说明](https://gitee.com/uploads/images/2017/1105/154346_ba65799b_734677.png "用户管理(有权限用户).png")
+![输入图片说明](https://gitee.com/uploads/images/2017/1105/154400_96b87c0a_734677.png "用户管理(无权限用户).png")
+- 用户管理(无权限操作拦截)
+![输入图片说明](https://gitee.com/uploads/images/2017/1105/154844_dc117f8c_734677.png "无权限操作.png")
 - 角色管理(CRUD)
-![输入图片说明](https://gitee.com/uploads/images/2017/1104/004916_5a1e6bec_734677.png "05.png")
+![输入图片说明](https://gitee.com/uploads/images/2017/1105/154418_8325175c_734677.png "角色管理.png")
 - 权限管理(CRUD)
-![输入图片说明](https://gitee.com/uploads/images/2017/1104/004953_d05814ea_734677.png "06.png")
+![输入图片说明](https://gitee.com/uploads/images/2017/1105/154438_b52688c6_734677.png "权限管理.png")
