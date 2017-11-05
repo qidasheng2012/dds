@@ -10,6 +10,7 @@ import com.xiaobingby.sys.entity.Role;
 import com.xiaobingby.sys.entity.User;
 import com.xiaobingby.sys.service.IRoleService;
 import com.xiaobingby.sys.service.IUserService;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -42,6 +43,7 @@ public class UserController extends BaseController {
      * 用户列表页面
      * @return
      */
+    @RequiresPermissions("user:show")
     @GetMapping("/list")
     public String list(Model model) {
         EntityWrapper<Role> wrapper = new EntityWrapper<>();
