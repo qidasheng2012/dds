@@ -6,7 +6,7 @@
 > [Bing-UPMS DEMO](http://139.199.220.103)  [企业站点 Demo](http://139.199.220.103:8080)
 
 ### Bing-UPMS + 在线学习系统
-> [点击观看](http://qcloud-10013821.cossh.myqcloud.com/ppt.mp4)
+> [点击观看 OSS 分支](http://qcloud-10013821.cossh.myqcloud.com/ppt.mp4)
 
 ### **具有如下特点** 
 - RBAC权限管理 控制到按钮级权限
