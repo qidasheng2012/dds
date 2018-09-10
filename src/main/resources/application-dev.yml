@@ -11,9 +11,9 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://ip:端口/bing-upms?useUnicode=true&characterEncoding=utf8
-    username: 账号
-    password: 密码
+    url: ENC(/OhVqDVHTMz9nUJnXKMiP7jZTlPDwAyF/WRnR3faUw5vIKzpn8fWhNiwetnRZDIm/Eyt5EUXDR0UEBieAy8irO9CjmncVoYgvYsggRCZN6SO//ICWn1QsGWUjfDZEs1XHctfwSvtYSjt4JDlOAn+cw1==)
+    username: ENC(MSsag8xmuJE9egaB5BjrVA1==)
+    password:  ENC(+XMXZSgfC+3zQCKakR+pNbf2ixuTgKbU1)
   mail:
     host: smtp.163.com
     username: fanshuye1304@163.com
