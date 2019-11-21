@@ -2,6 +2,55 @@ spring:
   profiles:
     active: dev
 
+  freemarker:
+    suffix: .html
+    request-context-attribute: request
+    charset: UTF-8
+  aop:
+    proxy-target-class: true
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  devtools:
+    restart:
+      enabled: true
+
+# mybatis-plus
+mybatis-plus:
+  mapper-locations: classpath:/mapper/*/*Mapper.xml
+  # 别名包扫描，多个package用逗号或者分号分隔
+  type-aliases-package: com.it.sys.entity
+
+  configuration:
+    #配置返回数据库(column下划线命名&&返回java实体是驼峰命名)，自动匹配无需as（没开启这个，SQL需要写as： select user_id as userId）
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    #配置JdbcTypeForNull, oracle数据库必须配置
+    jdbc-type-for-null: 'null'
+
+  global-config:
+    #主键类型  0:"数据库ID自增", 1:"用户输入ID",2:"全局唯一ID (数字类型唯一ID)", 3:"全局唯一ID UUID";
+    id-type: 0
+    #字段策略 0:"忽略判断",1:"非 NULL 判断"),2:"非空判断"
+    field-strategy: 2
+    #驼峰下划线转换
+    db-column-underline: true
+    #mp2.3+ 全局表前缀 t_
+    table-prefix: t_
+    #刷新mapper 调试神器
+    refresh-mapper: true
+    #数据库大写下划线转换
+    capital-mode: true
+    #逻辑删除配置（下面3个配置）
+    logic-delete-value: 4
+    logic-not-delete-value: 0
+
+#logging
+logging:
+  level:
+    com.it.sys.mapper: DEBUG
+
 # Required Encryption configuration property missing: jasypt.encryptor.password
 jasypt:
   encryptor:
