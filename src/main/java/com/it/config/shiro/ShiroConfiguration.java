@@ -67,8 +67,9 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/plugins/**", "anon");
         filterChainDefinitionMap.put("/500.html", "perms");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
-        filterChainDefinitionMap.put("/admin/mylogin", "anon");
+        filterChainDefinitionMap.put("/admin/dologin", "anon");
         filterChainDefinitionMap.put("/admin/login", "anon");
+        filterChainDefinitionMap.put("/admin/md", "anon");
         filterChainDefinitionMap.put("/admin/login.html", "anon"); // 登录界面
         filterChainDefinitionMap.put("/admin/register.html", "anon"); // 注册界面
         filterChainDefinitionMap.put("/admin/register", "anon"); // 注册提交数据

@@ -56,8 +56,8 @@ public class IndexController extends BaseController {
      *
      * @return
      */
-    @RequestMapping(value = "/index_1")
-    public String index_1() {
+    @RequestMapping(value = "/md")
+    public String md() {
         return "/md";
     }
 
@@ -79,8 +79,8 @@ public class IndexController extends BaseController {
      * @param map
      * @return
      */
-    @RequestMapping("/mylogin")
-    public String mylogin(String username, String password, Map<String, Object> map) {
+    @RequestMapping("/dologin")
+    public String dologin(String username, String password, Map<String, Object> map) {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
@@ -97,9 +97,9 @@ public class IndexController extends BaseController {
         }
         boolean authenticated = subject.isAuthenticated();
         if (authenticated) {
-            return "redirect:/admin/index.html";
+            return "redirect:/admin/index";
         }
-        return "redirect:/admin/login.html";
+        return "/admin/login";
     }
 
     /**
