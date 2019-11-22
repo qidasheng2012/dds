@@ -1,7 +1,7 @@
 # 简介
 
-> dds是一个轻量级的Spring Boot2.x快速开发平台，学习简单、轻量级、易扩展；使用最新技术。
-> 本系统是在Bing-UPMS 系统（https://gitee.com/xiaobingby/bing-upms）基础上升级为SpringBoot2.x
+- dds是一个轻量级的Spring Boot2.x快速开发平台，学习简单、轻量级、易扩展；使用最新技术。
+- 本系统是在Bing-UPMS 系统（https://gitee.com/xiaobingby/bing-upms） 基础上升级为SpringBoot2.x
 
 ### **具有如下特点** 
 - RBAC权限管理 控制到按钮级权限
