@@ -1,12 +1,7 @@
 # 简介
 
-> Bing-UPMS是一个轻量级的Spring Boot快速开发平台，学习简单、轻量级、易扩展；使用最新技术。
-
-### DEMO
-> [Bing-UPMS DEMO](http://139.199.220.103)-----------[企业站点 Demo](http://139.199.220.103:8080)
-
-### Bing-UPMS + 在线学习系统
-> [点击观看 OSS 分支](http://qcloud-10013821.cossh.myqcloud.com/ppt.mp4)
+> dds是一个轻量级的Spring Boot2.x快速开发平台，学习简单、轻量级、易扩展；使用最新技术。
+> 本系统是在Bing-UPMS 系统（https://gitee.com/xiaobingby/bing-upms）基础上升级为SpringBoot2.x
 
 ### **具有如下特点** 
 - RBAC权限管理 控制到按钮级权限
