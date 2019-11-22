@@ -42,7 +42,7 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
         // 登陆页面
-        shiroFilterFactoryBean.setLoginUrl("/admin/login.html");
+        shiroFilterFactoryBean.setLoginUrl("/admin/login");
         // 登录成功后要跳转的链接
         shiroFilterFactoryBean.setSuccessUrl("/admin/index");
         // 未授权界面
@@ -68,8 +68,8 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/500.html", "perms");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
         filterChainDefinitionMap.put("/admin/mylogin", "anon");
-        //filterChainDefinitionMap.put("/admin/login", "anon");
-        //filterChainDefinitionMap.put("/admin/login.html", "anon"); // 登录界面
+        filterChainDefinitionMap.put("/admin/login", "anon");
+        filterChainDefinitionMap.put("/admin/login.html", "anon"); // 登录界面
         filterChainDefinitionMap.put("/admin/register.html", "anon"); // 注册界面
         filterChainDefinitionMap.put("/admin/register", "anon"); // 注册提交数据
         filterChainDefinitionMap.put("/admin/sencCode", "anon"); // 发送邮箱验证码
