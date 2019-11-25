@@ -29,11 +29,8 @@ INSERT INTO `permission` VALUES ('3', '1', '角色管理', '1', '120', '/role/li
 INSERT INTO `permission` VALUES ('4', '1', '权限管理', '1', '130', '/permission/list', '-', 'fa fa-shirtsinbulk', '权限管理', '1', '2019-11-25 16:48:53', '2019-11-25 16:48:53');
 INSERT INTO `permission` VALUES ('5', '0', '测试', '0', '200', '/user/list', '-', 'fa fa-columns', '-', '1', '2019-11-25 16:48:53', '2019-11-25 16:48:53');
 INSERT INTO `permission` VALUES ('10', '0', '业务管理', '0', '300', '-', '-', 'fa fa-tag', '-', '1', '2019-11-25 16:48:53', '2019-11-25 16:48:53');
-INSERT INTO `permission` VALUES ('11', '10', '批次管理', '1', '310', '/ossStudybatch/list', '-', 'fa fa-bank', '-', '1', '2019-11-25 16:48:53', '2019-11-25 16:48:53');
-INSERT INTO `permission` VALUES ('12', '10', '课程管理', '1', '320', '/ossCourseinfo/list', '-', 'fa fa-book', '-', '1', '2019-11-25 16:48:53', '2019-11-25 16:48:53');
-INSERT INTO `permission` VALUES ('14', '10', '成绩管理', '1', '340', '-', '-', 'fa fa-file-excel-o', '-', '1', '2019-11-25 16:48:53', '2019-11-25 16:48:53');
-INSERT INTO `permission` VALUES ('15', '10', '添加课件', '1', '330', '/ossCourseware/addCoursewareView', '-', 'fa fa-folder', '-', '1', '2019-11-25 16:48:53', '2019-11-25 16:48:53');
-INSERT INTO `permission` VALUES ('16', '10', '课件管理', '1', '335', '/ossCourseware/list', '-', '-', '课件管理', '1', '2019-11-25 16:48:53', null);
+INSERT INTO `permission` VALUES ('11', '10', '产品管理', '1', '310', '/product/list', '-', 'fa fa-bank', '-', '1', '2019-11-25 16:48:53', null);
+INSERT INTO `permission` VALUES ('12', '10', '订单管理', '1', '320', '/order/list', '-', 'fa fa-book', '-', '1', '2019-11-25 16:48:53', null);
 INSERT INTO `permission` VALUES ('17', '2', '添加用户', '2', '110', '-', 'user:add', '-', '-', '1', '2019-11-25 16:48:53', null);
 INSERT INTO `permission` VALUES ('18', '2', '修改用户', '2', '110', '-', 'user:update', '-', '-', '1', '2019-11-25 16:48:53', null);
 INSERT INTO `permission` VALUES ('19', '2', '分配角色', '2', '110', '-', 'user:distribution', '-', '-', '1', '2019-11-25 16:48:53', null);
@@ -79,25 +76,23 @@ CREATE TABLE `role_permission` (
 -- ----------------------------
 -- Records of role_permission
 -- ----------------------------
-INSERT INTO `role_permission` VALUES ('1', '2', '1', '2019-11-25 15:53:33', null);
-INSERT INTO `role_permission` VALUES ('2', '2', '2', '2019-11-25 15:53:33', null);
-INSERT INTO `role_permission` VALUES ('3', '2', '20', '2019-11-25 15:53:33', null);
-INSERT INTO `role_permission` VALUES ('4', '1', '1', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('5', '1', '2', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('6', '1', '20', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('7', '1', '19', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('8', '1', '18', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('9', '1', '17', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('10', '1', '21', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('11', '1', '3', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('12', '1', '4', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('13', '1', '10', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('14', '1', '11', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('15', '1', '12', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('16', '1', '15', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('17', '1', '16', '2019-11-25 15:56:28', null);
-INSERT INTO `role_permission` VALUES ('18', '3', '5', '2019-11-25 14:38:27', null);
-INSERT INTO `role_permission` VALUES ('19', '3', '22', '2019-11-25 14:38:27', null);
+INSERT INTO `role_permission` VALUES ('20', '1', '1', null, null);
+INSERT INTO `role_permission` VALUES ('21', '1', '2', null, null);
+INSERT INTO `role_permission` VALUES ('22', '1', '17', null, null);
+INSERT INTO `role_permission` VALUES ('23', '1', '18', null, null);
+INSERT INTO `role_permission` VALUES ('24', '1', '19', null, null);
+INSERT INTO `role_permission` VALUES ('25', '1', '20', null, null);
+INSERT INTO `role_permission` VALUES ('26', '1', '21', null, null);
+INSERT INTO `role_permission` VALUES ('27', '1', '3', null, null);
+INSERT INTO `role_permission` VALUES ('28', '1', '4', null, null);
+INSERT INTO `role_permission` VALUES ('29', '1', '10', null, null);
+INSERT INTO `role_permission` VALUES ('30', '1', '11', null, null);
+INSERT INTO `role_permission` VALUES ('31', '1', '12', null, null);
+INSERT INTO `role_permission` VALUES ('32', '2', '1', null, null);
+INSERT INTO `role_permission` VALUES ('33', '2', '2', null, null);
+INSERT INTO `role_permission` VALUES ('34', '2', '20', null, null);
+INSERT INTO `role_permission` VALUES ('35', '3', '5', null, null);
+INSERT INTO `role_permission` VALUES ('36', '3', '22', null, null);
 
 -- ----------------------------
 -- Table structure for user
