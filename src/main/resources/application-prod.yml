@@ -14,7 +14,7 @@ spring:
     username: 账号
     password: 密码
   mail:
-    host: pro.163.com
-    username: pro@163.com
-    password: pro
+    host: smtp.163.com
+    username: fanshuye1304@163.com
+    password: fanshuye1304
 
