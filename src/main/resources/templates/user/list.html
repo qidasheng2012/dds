@@ -196,7 +196,7 @@
         $("#addUserModal").modal();
         $(function () {
             $("#userTableEvents").bootstrapTable({
-                url: '/admin/user/getList',
+                url: '/user/getList',
                 method: 'post',
                 contentType: "application/x-www-form-urlencoded",
                 queryParamsType:'',//查询参数组织方式
@@ -384,7 +384,7 @@
                     // Prevent form submission
                     e.preventDefault();
                     $.ajax({
-                        url: "/admin/user/addUser",
+                        url: "/user/addUser",
                         data:  $("#addForm").serialize(),
                         type: "POST",
                         dataType: 'json',
@@ -473,7 +473,7 @@
                     // Prevent form submission
                     e.preventDefault();
                     $.ajax({
-                        url: "/admin/user/updateUser",
+                        url: "/user/updateUser",
                         data:  $("#updateForm").serialize(),
                         type: "POST",
                         dataType: 'json',
@@ -507,7 +507,7 @@
                 }
 
                 $.ajax({
-                    url: "/admin/user/optionUserStatus",
+                    url: "/user/optionUserStatus",
                     data:  JSON.stringify(list),
                     contentType: "application/json; charset=utf-8",
                     type: "POST",
@@ -540,7 +540,7 @@
                     shade: false //不显示遮罩
                 }, function(){
                     $.ajax({
-                        url: "/admin/user/delete",
+                        url: "/user/delete",
                         data:  {"id": id},
                         type: "POST",
                         dataType: 'json',
@@ -567,7 +567,7 @@
                 }
                 list = list[0];
                 $.ajax({
-                    url: "/admin/role/getUserRole",
+                    url: "/role/getUserRole",
                     data:  JSON.stringify(list),
                     contentType: "application/json; charset=utf-8",
                     type: "POST",
@@ -605,7 +605,7 @@
                 }
 
                 $.ajax({
-                    url: "/admin/role/modifyUserRole",
+                    url: "/role/modifyUserRole",
                     data:  JSON.stringify(userRole),
                     contentType: "application/json; charset=utf-8",
                     type: "POST",

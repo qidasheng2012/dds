@@ -25,7 +25,7 @@ import java.util.Map;
  * </p>
  */
 @Controller
-@RequestMapping("/admin/role")
+@RequestMapping("/role")
 public class RoleController extends BaseController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class RoleController extends BaseController {
      */
     @GetMapping("/list")
     public String list() {
-        return "/admin/role/list";
+        return "/role/list";
     }
 
     /**

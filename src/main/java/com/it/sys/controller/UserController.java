@@ -27,7 +27,7 @@ import java.util.Map;
  * </p>
  */
 @Controller
-@RequestMapping("/admin/user")
+@RequestMapping("/user")
 public class UserController extends BaseController {
 
     @Autowired
@@ -47,7 +47,7 @@ public class UserController extends BaseController {
         wrapper.orderByAsc("sort");
         List<Role> allRole = iRoleService.list(wrapper);
         model.addAttribute("allRole", allRole);
-        return "/admin/user/list";
+        return "/user/list";
     }
 
     /**

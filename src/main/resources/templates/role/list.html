@@ -167,7 +167,7 @@
     <script>
         $(function () {
             $("#userTableEvents").bootstrapTable({
-                url: '/admin/role/getList',
+                url: '/role/getList',
                 method: 'post',
                 contentType: "application/x-www-form-urlencoded",
                 queryParamsType:'',//查询参数组织方式
@@ -314,7 +314,7 @@
                     // Prevent form submission
                     e.preventDefault();
                     $.ajax({
-                        url: "/admin/role/addRole",
+                        url: "/role/addRole",
                         data:  $("#addForm").serialize(),
                         type: "POST",
                         dataType: 'json',
@@ -388,7 +388,7 @@
                     // Prevent form submission
                     e.preventDefault();
                     $.ajax({
-                        url: "/admin/role/updateRole",
+                        url: "/role/updateRole",
                         data:  $("#updateForm").serialize(),
                         type: "POST",
                         dataType: 'json',
@@ -423,7 +423,7 @@
                     shade: false //不显示遮罩
                 }, function(){
                     $.ajax({
-                        url: "/admin/role/delete",
+                        url: "/role/delete",
                         data:  {"id": id},
                         type: "POST",
                         dataType: 'json',
@@ -470,7 +470,7 @@
                 var zNodes = [];
                 $.ajax({
                     async : false,
-                    url: "/admin/permission/getPermissionZTreeNodes",
+                    url: "/permission/getPermissionZTreeNodes",
                     data:  {"roleId": roleId},
                     type: "POST",
                     dataType: 'json',
@@ -507,7 +507,7 @@
                 console.log(rolePermission);
 
                 $.ajax({
-                    url: "/admin/permission/modifyRolePermission",
+                    url: "/permission/modifyRolePermission",
                     data:  JSON.stringify(rolePermission),
                     contentType: "application/json; charset=utf-8",
                     type: "POST",

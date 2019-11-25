@@ -21,7 +21,7 @@ import java.util.List;
  * </p>
  */
 @Controller
-@RequestMapping("/admin/permission")
+@RequestMapping("/permission")
 public class PermissionController extends BaseController {
 
     @Autowired
@@ -34,7 +34,7 @@ public class PermissionController extends BaseController {
      */
     @GetMapping("/list")
     public String list() {
-        return "/admin/permission/list";
+        return "/permission/list";
     }
 
     /**

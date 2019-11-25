@@ -211,13 +211,17 @@
             success: function(data){
                 if (data.success) {
                     parent.layer.msg(data.msg, {icon: 1});
-                    window.location.href="/login"
+                    setTimeout("toLogin()",5000);
                 } else {
                     parent.layer.msg(data.msg, {time: 1500, icon:5});
                 }
             }
         });
     });
+
+    function toLogin() {
+        window.location.href="/login";
+    }
 </script>
 
 </body>
