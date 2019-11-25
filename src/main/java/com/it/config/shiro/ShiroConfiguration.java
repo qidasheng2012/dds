@@ -42,9 +42,9 @@ public class ShiroConfiguration {
         shiroFilterFactoryBean.setSecurityManager(securityManager);
 
         // 登陆页面
-        shiroFilterFactoryBean.setLoginUrl("/admin/login");
+        shiroFilterFactoryBean.setLoginUrl("/login");
         // 登录成功后要跳转的链接
-        shiroFilterFactoryBean.setSuccessUrl("/admin/index");
+        shiroFilterFactoryBean.setSuccessUrl("/index");
         // 未授权界面
         shiroFilterFactoryBean.setUnauthorizedUrl("/500.html");
 
@@ -52,7 +52,7 @@ public class ShiroConfiguration {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
 
         // 配置退出过滤器,其中的具体的退出代码Shiro已经替我们实现了
-        filterChainDefinitionMap.put("/admin/logout", "logout");
+        filterChainDefinitionMap.put("/logout", "logout");
 
         /**
          * anon:所有url都都可以匿名访问;
@@ -67,15 +67,15 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/plugins/**", "anon");
         filterChainDefinitionMap.put("/500.html", "perms");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
-        filterChainDefinitionMap.put("/admin/dologin", "anon");
-        filterChainDefinitionMap.put("/admin/login", "anon");
-        filterChainDefinitionMap.put("/admin/md", "anon");
-        filterChainDefinitionMap.put("/admin/login.html", "anon"); // 登录界面
-        filterChainDefinitionMap.put("/admin/register.html", "anon"); // 注册界面
-        filterChainDefinitionMap.put("/admin/register", "anon"); // 注册提交数据
-        filterChainDefinitionMap.put("/admin/sencCode", "anon"); // 发送邮箱验证码
-        filterChainDefinitionMap.put("/admin/isUsername/**", "anon"); // 判断用户名是否存在
-        filterChainDefinitionMap.put("/admin/isEmail/**", "anon"); // 判断邮箱是否存在
+        filterChainDefinitionMap.put("/dologin", "anon");
+        filterChainDefinitionMap.put("/login", "anon");
+        filterChainDefinitionMap.put("/md", "anon");
+        filterChainDefinitionMap.put("/login.html", "anon"); // 登录界面
+        filterChainDefinitionMap.put("/register.html", "anon"); // 注册界面
+        filterChainDefinitionMap.put("/register", "anon"); // 注册提交数据
+        filterChainDefinitionMap.put("/sencCode", "anon"); // 发送邮箱验证码
+        filterChainDefinitionMap.put("/isUsername/**", "anon"); // 判断用户名是否存在
+        filterChainDefinitionMap.put("/isEmail/**", "anon"); // 判断邮箱是否存在
 
         filterChainDefinitionMap.put("/**", "authc");
 

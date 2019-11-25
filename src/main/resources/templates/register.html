@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-    <title>Bing-UPMS-注册</title>
+    <title>DDS 注册</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
 
@@ -61,7 +60,7 @@
 
     <div class="box">
 
-        <h3>欢迎注册 Bing-UPMS</h3>
+        <h3>欢迎注册 DDS</h3>
         <#--<p>创建一个H+新账户</p>-->
         <form id="addForm" class="m-t" role="form">
             <div class="form-group">
@@ -82,7 +81,7 @@
             </div>
             <button type="submit" class="btn btn-primary block full-width m-b">注 册</button>
 
-            <p class="text-muted text-center"><small>已经有账户了？</small><a href="login.html">点此登录</a>
+            <p class="text-muted text-center"><small>已经有账户了？</small><a href="/login">点此登录</a>
             </p>
 
         </form>
@@ -114,7 +113,7 @@
         layer.load();
 
         $.ajax({
-            url: "/admin/sencCode",
+            url: "/sencCode",
             data:  email,
             contentType: "application/json; charset=utf-8",
             type: "POST",
@@ -142,7 +141,7 @@
                         message: '用户名长度最多30个字符'
                     },
                     remote: {
-                        url: '/admin/isUsername',
+                        url: '/isUsername',
                         message: '用户名已存在'
                     }
                 }
@@ -156,7 +155,7 @@
                         message: '请输入有效的邮箱'
                     },
                     remote: {
-                        url: '/admin/isEmail',
+                        url: '/isEmail',
                         message: '邮箱已注册'
                     }
                 }
@@ -205,13 +204,14 @@
         e.preventDefault();
 
         $.ajax({
-            url: "/admin/register",
+            url: "/register",
             data:  $("#addForm").serialize(),
             type: "POST",
             dataType: 'json',
             success: function(data){
                 if (data.success) {
                     parent.layer.msg(data.msg, {icon: 1});
+                    window.location.href="/login"
                 } else {
                     parent.layer.msg(data.msg, {time: 1500, icon:5});
                 }

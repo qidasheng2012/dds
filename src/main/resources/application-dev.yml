@@ -12,8 +12,8 @@ spring:
     username: root
     password: 123456
   mail:
-    host: dev.163.com
-    username: dev@163.com
-    password: dev
+    host: smtp.163.com
+    username: fanshuye1304@163.com
+    password: fanshuye1304
 
 
