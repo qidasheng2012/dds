@@ -8,8 +8,6 @@ import org.apache.shiro.realm.Realm;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
-import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
-import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
 import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator;
@@ -67,17 +65,18 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/plugins/**", "anon");
         filterChainDefinitionMap.put("/500.html", "perms");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
-        filterChainDefinitionMap.put("/dologin", "anon");
-        filterChainDefinitionMap.put("/login", "anon");
-        filterChainDefinitionMap.put("/md", "anon");
+        filterChainDefinitionMap.put("/md", "anon"); // 项目技术预览
+        filterChainDefinitionMap.put("/login", "anon"); // 跳转登录页
         filterChainDefinitionMap.put("/login.html", "anon"); // 登录界面
+        filterChainDefinitionMap.put("/doLogin", "anon"); // 提交登录数据
+        filterChainDefinitionMap.put("/register", "anon"); // 跳转注册页
         filterChainDefinitionMap.put("/register.html", "anon"); // 注册界面
-        filterChainDefinitionMap.put("/register", "anon"); // 注册提交数据
+        filterChainDefinitionMap.put("/doRegister", "anon"); // 提交注册数据
         filterChainDefinitionMap.put("/sencCode", "anon"); // 发送邮箱验证码
         filterChainDefinitionMap.put("/isUsername/**", "anon"); // 判断用户名是否存在
         filterChainDefinitionMap.put("/isEmail/**", "anon"); // 判断邮箱是否存在
 
-        filterChainDefinitionMap.put("/**", "authc");
+        filterChainDefinitionMap.put("/**", "authc"); // 其他请求均需认证才能进行访问
 
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;

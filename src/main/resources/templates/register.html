@@ -204,7 +204,7 @@
         e.preventDefault();
 
         $.ajax({
-            url: "/register",
+            url: "/doRegister",
             data:  $("#addForm").serialize(),
             type: "POST",
             dataType: 'json',
@@ -219,6 +219,7 @@
         });
     });
 
+    // 跳转登录页面
     function toLogin() {
         window.location.href="/login";
     }

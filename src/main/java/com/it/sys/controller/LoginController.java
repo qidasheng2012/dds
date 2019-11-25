@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.it.common.controller.BaseController;
 import com.it.common.result.JsonResult;
 import com.it.sys.entity.User;
-import com.it.sys.service.IPermissionService;
 import com.it.sys.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -32,8 +31,6 @@ import java.util.Map;
 public class LoginController extends BaseController {
 
     @Autowired
-    private IPermissionService iPermissionService;
-    @Autowired
     private IUserService iUserService;
     @Autowired
     private JavaMailSender mailSender;
@@ -49,15 +46,15 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * 登陆提交页面
+     * 登陆提交
      *
      * @param username
      * @param password
      * @param map
      * @return
      */
-    @RequestMapping("/dologin")
-    public String dologin(String username, String password, Map<String, Object> map) {
+    @RequestMapping("/doLogin")
+    public String doLogin(String username, String password, Map<String, Object> map) {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
@@ -95,8 +92,8 @@ public class LoginController extends BaseController {
      * @return
      */
     @ResponseBody
-    @PostMapping(value = "/register")
-    public JsonResult register(User user, String code) {
+    @PostMapping(value = "/doRegister")
+    public JsonResult doRegister(User user, String code) {
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
         String sessionCode = (String) session.getAttribute("code");

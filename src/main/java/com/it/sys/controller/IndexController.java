@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 /**
- * 主页、登陆
+ * 主页
  */
 @Controller
 public class IndexController extends BaseController {
@@ -29,7 +29,7 @@ public class IndexController extends BaseController {
     }
 
     /**
-     * 主页预览
+     * 项目技术预览
      *
      * @return
      */

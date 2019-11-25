@@ -41,28 +41,28 @@
 <div class="middle-box text-center loginscreen  animated fadeInDown">
     <div class="box">
         <div>
-
             <!--<h3 class="logo-name">OSS</h3>-->
-
         </div>
         <h3>DDS 权限管理</h3>
 
-        <form class="m-t" role="form" action="/dologin" method="post">
+        <form class="m-t" role="form" action="/doLogin" method="post">
             <div class="form-group">
                 <input type="text" class="form-control" name="username" value="test" placeholder="用户名" >
             </div>
             <div class="form-group">
                 <input type="password" class="form-control" name="password" value="admin" placeholder="密码" >
             </div>
-        <#if msg??>
-            <div class="form-group">
-                <span style="color: #cc6571;">${msg}</span>
-            </div>
-        </#if>
+
+            <#if msg??>
+                <div class="form-group">
+                    <span style="color: #cc6571;">${msg}</span>
+                </div>
+            </if>
+
             <button type="submit" class="btn btn-success block full-width m-b">登 录</button>
 
-
-            <p class="text-muted text-center"> <a href="/login"><small>忘记密码了？</small></a> | <a href="/register">注册一个新账号</a>
+            <p class="text-muted text-center">
+                <a href="/login"><small>忘记密码了？</small></a> | <a href="/register">注册一个新账号</a>
             </p>
 
         </form>
