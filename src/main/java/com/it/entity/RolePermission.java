@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * <p>
- * role_permission 角色权限表
+ * t_role_permission 角色权限表
  * </p>
  */
 @Data

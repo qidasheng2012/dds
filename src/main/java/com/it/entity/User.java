@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * <p>
- * user 用户表
+ * t_user 用户表
  * </p>
  */
 @Data

@@ -7,7 +7,7 @@ import java.util.Date;
 
 /**
  * <p>
- * user_role 用户角色关联表
+ * t_user_role 用户角色关联表
  * </p>
  */
 @Data

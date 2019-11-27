@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  * <p>
- * permission 权限表
+ * t_permission 权限表
  * </p>
  */
 @Data
