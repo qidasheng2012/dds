@@ -50,8 +50,3 @@ mybatis-plus:
 logging:
   level:
     com.it.sys.mapper: DEBUG
-
-# Required Encryption configuration property missing: jasypt.encryptor.password
-jasypt:
-  encryptor:
-    password: bing1
