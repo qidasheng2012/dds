@@ -19,11 +19,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * <p>
- * role 角色表 前端控制器
- * </p>
- */
 @Controller
 @RequestMapping("/role")
 public class RoleController extends BaseController {

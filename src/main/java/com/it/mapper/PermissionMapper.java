@@ -6,11 +6,6 @@ import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
-/**
- * <p>
- * permission 权限表 Mapper 接口
- * </p>
- */
 public interface PermissionMapper extends BaseMapper<Permission> {
 
     /**

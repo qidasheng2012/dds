@@ -15,14 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * <p>
- * user 用户表 服务实现类
- * </p>
- *
- * @author XiaoBingBy
- * @since 2017-09-23
- */
 @Service
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 

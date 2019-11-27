@@ -8,11 +8,6 @@ import com.it.entity.ZNodes;
 
 import java.util.List;
 
-/**
- * <p>
- * permission 权限表 服务类
- * </p>
- */
 public interface IPermissionService extends IService<Permission> {
 
     /**

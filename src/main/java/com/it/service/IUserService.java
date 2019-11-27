@@ -3,11 +3,6 @@ package com.it.service;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.it.entity.User;
 
-/**
- * <p>
- * user 用户表 服务类
- * </p>
- */
 public interface IUserService extends IService<User> {
 
     /**

@@ -15,11 +15,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-/**
- * <p>
- * permission 权限表 前端控制器
- * </p>
- */
 @Controller
 @RequestMapping("/permission")
 public class PermissionController extends BaseController {

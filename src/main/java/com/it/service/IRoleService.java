@@ -6,11 +6,6 @@ import com.it.entity.UserRole;
 
 import java.util.List;
 
-/**
- * <p>
- * role 角色表 服务类
- * </p>
- */
 public interface IRoleService extends IService<Role> {
 
     /**

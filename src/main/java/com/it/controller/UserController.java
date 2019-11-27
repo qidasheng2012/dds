@@ -21,11 +21,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * <p>
- * user 用户表 前端控制器
- * </p>
- */
 @Controller
 @RequestMapping("/user")
 public class UserController extends BaseController {
