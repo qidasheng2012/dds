@@ -196,8 +196,8 @@
         $("#addUserModal").modal();
         $(function () {
             $("#userTableEvents").bootstrapTable({
-                url: '/user/getList',
-                method: 'post',
+                url: '/user/list',
+                method: 'get',
                 contentType: "application/x-www-form-urlencoded",
                 queryParamsType:'',//查询参数组织方式
                 queryParams:queryParams,//请求服务器时所传的参数

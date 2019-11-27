@@ -33,8 +33,8 @@ public class RoleController extends BaseController {
      *
      * @return
      */
-    @GetMapping("/list")
-    public String list() {
+    @GetMapping("/toList")
+    public String toList() {
         return "/role/list";
     }
 
@@ -47,8 +47,8 @@ public class RoleController extends BaseController {
      * @return
      */
     @ResponseBody
-    @PostMapping("/getList")
-    public Map<String, Object> getUserList(int pageNumber, int pageSize, String searchText) {
+    @GetMapping("/list")
+    public Map<String, Object> list(int pageNumber, int pageSize, String searchText) {
         Map<String, Object> result = new HashMap<String, Object>();
         Page<Role> page = new Page<>(pageNumber, pageSize);
         QueryWrapper<Role> wrapper = new QueryWrapper<>();

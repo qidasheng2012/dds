@@ -27,8 +27,8 @@ public class PermissionController extends BaseController {
      *
      * @return
      */
-    @GetMapping("/list")
-    public String list() {
+    @GetMapping("/toList")
+    public String toList() {
         return "/permission/list";
     }
 
@@ -38,8 +38,8 @@ public class PermissionController extends BaseController {
      * @return
      */
     @ResponseBody
-    @GetMapping("/getList")
-    public List<Permission> getUserList() {
+    @GetMapping("/list")
+    public List<Permission> list() {
         // 排序
         QueryWrapper<Permission> wrapper = new QueryWrapper<>();
         wrapper.orderByAsc("sort");

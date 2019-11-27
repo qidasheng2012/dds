@@ -36,8 +36,8 @@ public class UserController extends BaseController {
      * @return
      */
     @RequiresPermissions("user:show")
-    @GetMapping("/list")
-    public String list(Model model) {
+    @GetMapping("/toList")
+    public String toList(Model model) {
         QueryWrapper<Role> wrapper = new QueryWrapper<>();
         wrapper.orderByAsc("sort");
         List<Role> allRole = iRoleService.list(wrapper);
@@ -54,8 +54,8 @@ public class UserController extends BaseController {
      * @return
      */
     @ResponseBody
-    @PostMapping("/getList")
-    public Map<String, Object> getUserList(int pageNumber, int pageSize, String searchText) {
+    @GetMapping("/list")
+    public Map<String, Object> list(int pageNumber, int pageSize, String searchText) {
         Map<String, Object> result = new HashMap<String, Object>();
         Page<User> page = new Page<>(pageNumber, pageSize);
         QueryWrapper<User> wrapper = new QueryWrapper<>();

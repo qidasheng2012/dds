@@ -20,7 +20,7 @@ public class IndexController extends BaseController {
     private IPermissionService iPermissionService;
 
     // 主页
-    @RequestMapping(value = "/index")
+    @RequestMapping("/index")
     public String index(Model model) {
         // 获取当前用户菜单
         List<Menu> menus = iPermissionService.createMenu(getCurrentLoginId());
