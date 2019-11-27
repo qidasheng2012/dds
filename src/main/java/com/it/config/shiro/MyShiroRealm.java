@@ -2,10 +2,10 @@ package com.it.config.shiro;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.it.common.utils.StringUtil;
-import com.it.sys.entity.Permission;
-import com.it.sys.entity.User;
-import com.it.sys.mapper.PermissionMapper;
-import com.it.sys.service.IUserService;
+import com.it.entity.Permission;
+import com.it.entity.User;
+import com.it.mapper.PermissionMapper;
+import com.it.service.IUserService;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -16,8 +16,6 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;

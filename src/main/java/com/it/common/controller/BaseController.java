@@ -1,7 +1,7 @@
 package com.it.common.controller;
 
 import com.it.common.result.JsonResult;
-import com.it.sys.entity.User;
+import com.it.entity.User;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
