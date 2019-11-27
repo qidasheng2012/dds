@@ -11,17 +11,17 @@
 
     <groupId>com.it</groupId>
     <artifactId>dds</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>jar</packaging>
     <name>dds</name>
-    <description>DDS-后台权限管理</description>
+    <description>day day studying</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
 
-        <jasypt.version>2.0.0</jasypt.version>
+        <mybatisPlus.version>3.2.0</mybatisPlus.version>
         <druid.version>1.1.21</druid.version>
         <shiro.version>1.4.1</shiro.version>
         <ehcache.version>1.4.1</ehcache.version>
@@ -53,12 +53,6 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.ulisesbocchio</groupId>
-            <artifactId>jasypt-spring-boot-starter</artifactId>
-            <version>${jasypt.version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-spring-boot-web-starter</artifactId>
             <version>${shiro.version}</version>
@@ -66,7 +60,7 @@
         <dependency>
             <groupId>net.mingsoft</groupId>
             <artifactId>shiro-freemarker-tags</artifactId>
-            <version>0.1</version>
+            <version>1.0.1</version>
             <exclusions>
                 <exclusion>
                     <artifactId>log4j</artifactId>
@@ -83,7 +77,7 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus-boot-starter</artifactId>
-            <version>3.2.0</version>
+            <version>${mybatisPlus.version}</version>
         </dependency>
 
         <!-- druid -->
