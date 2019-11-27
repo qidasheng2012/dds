@@ -14,8 +14,8 @@
         <result column="icon" property="icon"/>
         <result column="description" property="description"/>
         <result column="status" property="status"/>
-        <result column="gmt_create" property="gmtCreate"/>
-        <result column="gmt_modified" property="gmtModified"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
     </resultMap>
 
     <!-- 查询父菜单 -->

@@ -39,11 +39,11 @@ public class Role {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT)
-    private Date gmtCreate;
+    private Date createTime;
     /**
      * 修改时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date gmtModified;
+    private Date updateTime;
 
 }
