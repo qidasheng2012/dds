@@ -11,7 +11,7 @@ import java.util.Date;
  * </p>
  */
 @Data
-@TableName("role")
+@TableName("t_role")
 public class Role {
 
     /**

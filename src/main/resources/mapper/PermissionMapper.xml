@@ -21,16 +21,16 @@
     <!-- 查询父菜单 -->
     <select id="findParentMenu" resultMap="BaseResultMap">
         SELECT *
-        from permission
+        from t_permission
         WHERE id in
               (
                   select pid
-                  from role_permission
+                  from t_role_permission
                   WHERE rid in
                         (
                             select rid
-                            from user_role
-                                     INNER JOIN role on user_role.rid = role.id
+                            from t_user_role
+                                     INNER JOIN t_role on t_user_role.rid = t_role.id
                             where uid = #{0}
                               and status = 1
                         )
@@ -42,16 +42,16 @@
     <!-- 查询子菜单 -->
     <select id="findSubMenu" resultMap="BaseResultMap">
         SELECT *
-        from permission
+        from t_permission
         WHERE id in
               (
                   select pid
-                  from role_permission
+                  from t_role_permission
                   WHERE rid in
                         (
                             select rid
-                            from user_role
-                                     INNER JOIN role on user_role.rid = role.id
+                            from t_user_role
+                                     INNER JOIN t_role on t_user_role.rid = t_role.id
                             where uid = #{uid}
                               and status = 1
                         )
@@ -63,16 +63,16 @@
 
     <select id="findUserPermission" resultMap="BaseResultMap">
         SELECT *
-        from permission
+        from t_permission
         WHERE id in
               (
                   select pid
-                  from role_permission
+                  from t_role_permission
                   WHERE rid in
                         (
                             select rid
-                            from user_role
-                                     INNER JOIN role on user_role.rid = role.id
+                            from t_user_role
+                                     INNER JOIN t_role on t_user_role.rid = t_role.id
                             where uid = #{0}
                               and status = 1
                         )

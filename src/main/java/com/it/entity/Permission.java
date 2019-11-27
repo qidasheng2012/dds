@@ -12,7 +12,7 @@ import java.util.Date;
  * </p>
  */
 @Data
-@TableName("permission")
+@TableName("t_permission")
 public class Permission {
 
     /**
