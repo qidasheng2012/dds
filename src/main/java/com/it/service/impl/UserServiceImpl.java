@@ -7,7 +7,6 @@ import com.it.entity.UserRole;
 import com.it.mapper.UserMapper;
 import com.it.mapper.UserRoleMapper;
 import com.it.service.IUserService;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,28 +19,6 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
     @Autowired
     private UserRoleMapper userRoleMapper;
-
-    @Override
-    public boolean addUser(User user) {
-        String salt = String.valueOf(System.currentTimeMillis());
-        SimpleHash password = new SimpleHash("MD5", user.getUsername(), salt);
-        user.setSalt(salt);
-        user.setPassword(password.toString());
-        Integer result = baseMapper.insert(user);
-        if (result >= 1) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
-    public boolean updateUser(User user) {
-        Integer result = baseMapper.updateById(user);
-        if (result >= 1) {
-            return true;
-        }
-        return false;
-    }
 
     @Transactional
     @Override
