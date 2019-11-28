@@ -27,7 +27,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
     private IRolePermissionService iRolePermissionService;
 
     @Override
-    public List<Menu> createMenu(Long uid) {
+    public List<Menu> getMenus(Long uid) {
         // 创建菜单对象
         List<Menu> menus = new ArrayList<>();
 

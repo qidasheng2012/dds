@@ -31,7 +31,7 @@
                             select rid
                             from t_user_role
                                      INNER JOIN t_role on t_user_role.rid = t_role.id
-                            where uid = #{0}
+                            where uid = #{uid}
                               and status = 1
                         )
               )

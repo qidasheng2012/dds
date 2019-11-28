@@ -14,7 +14,7 @@ public interface PermissionMapper extends BaseMapper<Permission> {
      * @param uid 用户ID
      * @return
      */
-    List<Permission> findParentMenu(Long uid);
+    List<Permission> findParentMenu(@Param("uid") Long uid);
 
     /**
      * 查询子菜单

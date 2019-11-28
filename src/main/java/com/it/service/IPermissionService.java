@@ -16,7 +16,7 @@ public interface IPermissionService extends IService<Permission> {
      * @param uid
      * @return
      */
-    List<Menu> createMenu(Long uid);
+    List<Menu> getMenus(Long uid);
 
     /**
      * 查询所有权限树形展示 并且选中角色拥有的树节点
