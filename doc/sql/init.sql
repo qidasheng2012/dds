@@ -1,3 +1,7 @@
+CREATE DATABASE `dds`;
+
+USE `dds`;
+
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
