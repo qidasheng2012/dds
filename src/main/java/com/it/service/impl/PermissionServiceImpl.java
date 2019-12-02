@@ -50,6 +50,7 @@ public class PermissionServiceImpl extends ServiceImpl<PermissionMapper, Permiss
             });
             m.setChildren(temp);
         });
+
         return menus;
     }
 

@@ -51,9 +51,9 @@ public class RoleServiceImpl extends ServiceImpl<RoleMapper, Role> implements IR
     @Override
     public boolean modifyUserRole(List<UserRole> userRoles) {
         // 删除用户角色原表数据
-        QueryWrapper<UserRole> userRoleEntityWrapper = new QueryWrapper<>();
-        userRoleEntityWrapper.eq("uid", userRoles.get(0).getUid());
-        userRoleMapper.delete(userRoleEntityWrapper);
+        QueryWrapper<UserRole> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid", userRoles.get(0).getUid());
+        userRoleMapper.delete(queryWrapper);
 
         // 新增用户角色数据 并 返回
         return iUserRoleService.saveBatch(userRoles);

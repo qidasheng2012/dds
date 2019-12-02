@@ -72,9 +72,10 @@ public class ShiroConfiguration {
         filterChainDefinitionMap.put("/register", "anon"); // 跳转注册页
         filterChainDefinitionMap.put("/register.html", "anon"); // 注册界面
         filterChainDefinitionMap.put("/doRegister", "anon"); // 提交注册数据
-        filterChainDefinitionMap.put("/sencCode", "anon"); // 发送邮箱验证码
+        filterChainDefinitionMap.put("/sendCode", "anon"); // 发送邮箱验证码
         filterChainDefinitionMap.put("/isUsername/**", "anon"); // 判断用户名是否存在
         filterChainDefinitionMap.put("/isEmail/**", "anon"); // 判断邮箱是否存在
+        filterChainDefinitionMap.put("/errorPage/**", "anon"); // 错误页
 
         filterChainDefinitionMap.put("/**", "authc"); // 其他请求均需认证才能进行访问
 

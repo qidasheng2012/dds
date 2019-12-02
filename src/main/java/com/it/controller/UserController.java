@@ -14,7 +14,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -37,11 +37,11 @@ public class UserController extends BaseController {
      */
     @RequiresPermissions("user:show")
     @GetMapping("/toList")
-    public String toList(Model model) {
-        QueryWrapper<Role> wrapper = new QueryWrapper<>();
-        wrapper.orderByAsc("sort");
-        List<Role> allRole = iRoleService.list(wrapper);
-        model.addAttribute("allRole", allRole);
+    public String toList(ModelMap map) {
+        QueryWrapper<Role> queryWrapper = new QueryWrapper<>();
+        queryWrapper.orderByAsc("sort");
+        List<Role> allRole = iRoleService.list(queryWrapper);
+        map.put("allRole", allRole);
         return "/user/list";
     }
 
@@ -58,11 +58,11 @@ public class UserController extends BaseController {
     public Map<String, Object> list(int pageNumber, int pageSize, String searchText) {
         Map<String, Object> result = new HashMap<String, Object>();
         Page<User> page = new Page<>(pageNumber, pageSize);
-        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
         if (StringUtil.isNotEmpty(searchText)) {
-            wrapper.like("username", searchText);
+            queryWrapper.like("username", searchText);
         }
-        IPage<User> userPage = iUserService.page(page, wrapper);
+        IPage<User> userPage = iUserService.page(page, queryWrapper);
         result.put("total", userPage.getTotal());
         result.put("rows", userPage.getRecords());
         return result;

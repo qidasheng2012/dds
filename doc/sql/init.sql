@@ -12,13 +12,13 @@ CREATE TABLE `t_permission` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `pid` bigint(20) DEFAULT NULL COMMENT '上级ID',
   `name` varchar(50) DEFAULT NULL COMMENT '权限名',
-  `type` smallint(6) DEFAULT NULL COMMENT '类型 0、菜单 1、功能',
-  `sort` smallint(6) DEFAULT NULL COMMENT '排序',
+  `type` int(1) DEFAULT NULL COMMENT '类型 0、菜单 1、功能 2、按钮',
+  `sort` int(6) DEFAULT NULL COMMENT '排序',
   `url` varchar(100) DEFAULT NULL COMMENT '地址',
   `perm_code` varchar(30) DEFAULT NULL COMMENT '权限编码',
   `icon` varchar(30) DEFAULT NULL COMMENT '图标',
   `description` varchar(100) DEFAULT NULL COMMENT '描述',
-  `status` smallint(6) DEFAULT NULL COMMENT '状态 0、禁用 1、正常',
+  `status` int(1) DEFAULT NULL COMMENT '状态 0、禁用 1、正常',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
@@ -48,9 +48,9 @@ DROP TABLE IF EXISTS `t_role`;
 CREATE TABLE `t_role` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
   `name` varchar(30) DEFAULT NULL COMMENT '角色名',
-  `sort` smallint(6) DEFAULT NULL COMMENT '排序',
+  `sort` int(6) DEFAULT NULL COMMENT '排序',
   `description` varchar(60) DEFAULT NULL COMMENT '描述',
-  `status` smallint(5) DEFAULT NULL,
+  `status` int(1) DEFAULT NULL COMMENT '状态 0、禁用 1、正常',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)
@@ -108,7 +108,7 @@ CREATE TABLE `t_user` (
   `password` varchar(50) DEFAULT NULL COMMENT '密码',
   `salt` varchar(50) DEFAULT NULL COMMENT '盐',
   `email` varchar(50) DEFAULT NULL COMMENT '邮箱',
-  `status` smallint(6) DEFAULT NULL COMMENT '0、禁用 1、正常',
+  `status` int(1) DEFAULT NULL COMMENT '0、禁用 1、正常',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_time` datetime DEFAULT NULL COMMENT '修改时间',
   PRIMARY KEY (`id`)

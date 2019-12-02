@@ -43,8 +43,7 @@ public class PermissionController extends BaseController {
         // 排序
         QueryWrapper<Permission> wrapper = new QueryWrapper<>();
         wrapper.orderByAsc("sort");
-        List<Permission> permissions = iPermissionService.list(wrapper);
-        return permissions;
+        return iPermissionService.list(wrapper);
     }
 
     /**
@@ -79,7 +78,7 @@ public class PermissionController extends BaseController {
     @RequestMapping(value = "/addPermission")
     public JsonResult addPermission(Permission permission) {
         if (permission.getType() == 0) {
-            permission.setPid(0l);
+            permission.setPid(0L);
         }
         return iPermissionService.save(permission) ? renderSuccess("添加成功") : renderError("添加失败");
     }
@@ -93,7 +92,7 @@ public class PermissionController extends BaseController {
     @RequestMapping(value = "/updatePermission")
     public JsonResult updatePermission(Permission permission) {
         if (permission.getType() == 0) {
-            permission.setPid(0l);
+            permission.setPid(0L);
         }
         return iPermissionService.updateById(permission) ? renderSuccess("修改成功") : renderError("修改失败");
     }

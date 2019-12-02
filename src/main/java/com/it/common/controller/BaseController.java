@@ -15,10 +15,7 @@ public class BaseController {
      * @return result
      */
     protected JsonResult renderError() {
-        JsonResult result = new JsonResult();
-        result.setSuccess(false);
-        result.setStatus("500");
-        return result;
+        return renderError(null);
     }
 
     /**
@@ -28,7 +25,9 @@ public class BaseController {
      * @return result
      */
     protected JsonResult renderError(String msg) {
-        JsonResult result = renderError();
+        JsonResult result = new JsonResult();
+        result.setSuccess(false);
+        result.setStatus("500");
         result.setMsg(msg);
         return result;
     }
@@ -39,10 +38,7 @@ public class BaseController {
      * @return result
      */
     protected JsonResult renderSuccess() {
-        JsonResult result = new JsonResult();
-        result.setSuccess(true);
-        result.setStatus("200");
-        return result;
+        return renderSuccess(null);
     }
 
     /**
@@ -52,7 +48,9 @@ public class BaseController {
      * @return result
      */
     protected JsonResult renderSuccess(String msg) {
-        JsonResult result = renderSuccess();
+        JsonResult result = new JsonResult();
+        result.setSuccess(true);
+        result.setStatus("200");
         result.setMsg(msg);
         return result;
     }
@@ -70,12 +68,18 @@ public class BaseController {
     }
 
     /**
+     * 登录用户对象
+     */
+    public User getCurrentUser() {
+        Subject currentUser = SecurityUtils.getSubject();
+        return currentUser.getPrincipals().oneByType(User.class);
+    }
+
+    /**
      * 登录用户名
      */
     public String getCurrentLoginUsername() {
-        Subject currentUser = SecurityUtils.getSubject();
-        User user = currentUser.getPrincipals().oneByType(User.class);
-        return user.getUsername();
+        return getCurrentUser().getUsername();
     }
 
     /**
@@ -84,18 +88,7 @@ public class BaseController {
      * @return
      */
     public Long getCurrentLoginId() {
-        Subject currentUser = SecurityUtils.getSubject();
-        User user = currentUser.getPrincipals().oneByType(User.class);
-        return user.getId();
-    }
-
-    /**
-     * 登录用户对象
-     */
-    public User getCurrentUser() {
-        Subject currentUser = SecurityUtils.getSubject();
-        User user = currentUser.getPrincipals().oneByType(User.class);
-        return user;
+        return getCurrentUser().getId();
     }
 
 }

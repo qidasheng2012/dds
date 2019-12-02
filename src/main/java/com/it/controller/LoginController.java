@@ -7,6 +7,8 @@ import com.it.entity.User;
 import com.it.service.IUserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.session.Session;
@@ -15,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.Message;
@@ -41,7 +44,7 @@ public class LoginController extends BaseController {
      * @return
      */
     @GetMapping("/login")
-    public String loginForm() {
+    public String login() {
         return "/login";
     }
 
@@ -53,26 +56,27 @@ public class LoginController extends BaseController {
      * @param map
      * @return
      */
-    @RequestMapping("/doLogin")
-    public String doLogin(String username, String password, Map<String, Object> map) {
+    @PostMapping("/doLogin")
+    public String doLogin(String username, String password, ModelMap map) {
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         try {
             subject.login(token);
+        } catch (UnknownAccountException e) {
+            map.put("msg", "用户不存在");
+            return "/login";
+        } catch (IncorrectCredentialsException e) {
+            map.put("msg", "密码不正确");
+            return "/login";
         } catch (AuthenticationException e) {
-            String simpleName = e.getClass().getSimpleName();
-            if ("UnknownAccountException".equals(simpleName)) {
-                map.put("msg", "用户不存在");
-                return "/login";
-            } else if ("IncorrectCredentialsException".equals(simpleName)) {
-                map.put("msg", "密码不正确");
-                return "/login";
-            }
+            return "/login";
         }
+
         boolean authenticated = subject.isAuthenticated();
         if (authenticated) {
             return "redirect:/index";
         }
+
         return "/login";
     }
 
@@ -81,7 +85,7 @@ public class LoginController extends BaseController {
      *
      * @return
      */
-    @GetMapping(value = "/register")
+    @GetMapping("/register")
     public String registerView() {
         return "/register";
     }
@@ -92,7 +96,7 @@ public class LoginController extends BaseController {
      * @return
      */
     @ResponseBody
-    @PostMapping(value = "/doRegister")
+    @PostMapping("/doRegister")
     public JsonResult doRegister(User user, String code) {
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
@@ -169,7 +173,7 @@ public class LoginController extends BaseController {
      * @return
      */
     @ResponseBody
-    @PostMapping("/sencCode")
+    @PostMapping("/sendCode")
     public JsonResult sendCode(@RequestBody String mail) {
         mail = mail.replace("%40", "@");// 字符串替换
 
@@ -180,15 +184,19 @@ public class LoginController extends BaseController {
         if (user != null) {
             return renderError("邮箱已注册");
         }
-        int code = (int) ((Math.random() * 9 + 1) * 100000);
 
+        int code = (int) ((Math.random() * 9 + 1) * 100000);
         Subject subject = SecurityUtils.getSubject();
         Session session = subject.getSession();
-        session.setAttribute("code", code + "");
+        session.setAttribute("code", String.valueOf(code));
 
-        /*SimpleMailMessage message = new SimpleMailMessage();*/
+        /*SimpleMailMessage message = new SimpleMailMessage();
+        message.setFrom("fanshuye1304@163.com");//发送者.
+        message.setTo(mail); // 接收者.
+        message.setSubject("DDS 注册验证"); // 邮件主题.
+        message.setText("<h1>验证码</h1>"); // 邮件内容.
+        */
         MimeMessage mimeMessage = mailSender.createMimeMessage();
-
         try {
             // 指明邮件的发件人
             mimeMessage.setFrom(new InternetAddress("fanshuye1304@163.com"));
@@ -201,12 +209,6 @@ public class LoginController extends BaseController {
         } catch (MessagingException e) {
             e.printStackTrace();
         }
-
-
-        /*message.setFrom("fanshuye1304@163.com");//发送者.
-        message.setTo(mail); // 接收者.
-        message.setSubject("Bing-Upms 注册验证"); // 邮件主题.
-        message.setText("<h1>验证码</h1>"); // 邮件内容.*/
 
         try {
             mailSender.send(mimeMessage); //发送邮件

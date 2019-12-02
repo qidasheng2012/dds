@@ -1,13 +1,14 @@
 package com.it.controller;
 
+import com.baomidou.mybatisplus.core.toolkit.IOUtils;
 import com.it.common.controller.BaseController;
 import com.it.common.result.JsonResult;
 import com.it.common.utils.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,12 +30,11 @@ public class FileUploadController extends BaseController {
      * 文件上传
      *
      * @param file
-     * @param request
      * @return
      */
     @RequestMapping(value = "/upload")
     @ResponseBody
-    public JsonResult upload(@RequestParam("test") MultipartFile file, HttpServletRequest request) {
+    public JsonResult upload(@RequestParam("test") MultipartFile file) {
         if (file.isEmpty()) {
             return renderError("文件不能为空");
         }
@@ -61,23 +61,23 @@ public class FileUploadController extends BaseController {
 
             return renderSuccess(dest.getName());
         } catch (IllegalStateException e) {
-            e.printStackTrace();
+            log.error("上传失败：", e);
         } catch (IOException e) {
-            e.printStackTrace();
+            log.error("上传失败：", e);
         }
+
         return renderError("上传失败");
     }
 
     //文件下载相关代码
     @RequestMapping("/download")
-    public String downloadFile(HttpServletRequest request, HttpServletResponse response) {
+    public String downloadFile(HttpServletResponse response) {
         String fileName = "code2.png";
         if (fileName != null) {
             File file = new File(fileUploadPath, fileName);
             if (file.exists()) {
                 response.setContentType("application/force-download");// 设置强制下载不打开
-                response.addHeader("Content-Disposition",
-                        "attachment;fileName=" + fileName);// 设置文件名
+                response.addHeader("Content-Disposition", "attachment;fileName=" + fileName);// 设置文件名
                 byte[] buffer = new byte[1024];
                 FileInputStream fis = null;
                 BufferedInputStream bis = null;
@@ -90,24 +90,13 @@ public class FileUploadController extends BaseController {
                         os.write(buffer, 0, i);
                         i = bis.read(buffer);
                     }
-                    System.out.println("success");
+                    log.info("success");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    log.error("下载文件失败：", e);
                 } finally {
-                    if (bis != null) {
-                        try {
-                            bis.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (fis != null) {
-                        try {
-                            fis.close();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    }
+                    IOUtils.closeQuietly(bis);
+
+                    IOUtils.closeQuietly(fis);
                 }
             }
         }
@@ -115,11 +104,10 @@ public class FileUploadController extends BaseController {
     }
 
     //多文件上传
-    @RequestMapping(value = "/batch/upload", method = RequestMethod.POST)
+    @PostMapping("/batch/upload")
     @ResponseBody
     public String handleFileUpload(HttpServletRequest request) {
-        List<MultipartFile> files = ((MultipartHttpServletRequest) request)
-                .getFiles("file");
+        List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
         MultipartFile file = null;
         BufferedOutputStream stream = null;
         for (int i = 0; i < files.size(); ++i) {
@@ -127,21 +115,18 @@ public class FileUploadController extends BaseController {
             if (!file.isEmpty()) {
                 try {
                     byte[] bytes = file.getBytes();
-                    stream = new BufferedOutputStream(new FileOutputStream(
-                            new File(file.getOriginalFilename())));
+                    stream = new BufferedOutputStream(new FileOutputStream(new File(file.getOriginalFilename())));
                     stream.write(bytes);
-                    stream.close();
-
                 } catch (Exception e) {
-                    stream = null;
-                    return "You failed to upload " + i + " => "
-                            + e.getMessage();
+                    return "You failed to upload " + i + " => " + e.getMessage();
+                } finally {
+                    IOUtils.closeQuietly(stream);
                 }
             } else {
-                return "You failed to upload " + i
-                        + " because the file was empty.";
+                return "You failed to upload " + i + " because the file was empty.";
             }
         }
+
         return "upload successful";
     }
 }

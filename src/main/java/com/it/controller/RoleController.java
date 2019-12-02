@@ -51,12 +51,12 @@ public class RoleController extends BaseController {
     public Map<String, Object> list(int pageNumber, int pageSize, String searchText) {
         Map<String, Object> result = new HashMap<String, Object>();
         Page<Role> page = new Page<>(pageNumber, pageSize);
-        QueryWrapper<Role> wrapper = new QueryWrapper<>();
+        QueryWrapper<Role> queryWrapper = new QueryWrapper<>();
         if (StringUtil.isNotEmpty(searchText)) {
-            wrapper.like("name", searchText);
+            queryWrapper.like("name", searchText);
         }
-        wrapper.orderByAsc("sort");
-        IPage<Role> rolePage = iRoleService.page(page, wrapper);
+        queryWrapper.orderByAsc("sort");
+        IPage<Role> rolePage = iRoleService.page(page, queryWrapper);
         result.put("total", rolePage.getTotal());
         result.put("rows", rolePage.getRecords());
         return result;
@@ -110,9 +110,9 @@ public class RoleController extends BaseController {
     @ResponseBody
     @RequestMapping("/getUserRole")
     public JsonResult getUserRole(@RequestBody User user) {
-        QueryWrapper<UserRole> wrapper = new QueryWrapper<>();
-        wrapper.eq("uid", user.getId());
-        List<UserRole> userRoles = iUserRoleService.list(wrapper);
+        QueryWrapper<UserRole> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("uid", user.getId());
+        List<UserRole> userRoles = iUserRoleService.list(queryWrapper);
         return renderSuccess(userRoles);
     }
 
