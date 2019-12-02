@@ -31,6 +31,6 @@ public interface PermissionMapper extends BaseMapper<Permission> {
      * @param uid
      * @return
      */
-    List<Permission> findUserPermission(Long uid);
+    List<Permission> findUserPermission(@Param("uid") Long uid);
 
 }

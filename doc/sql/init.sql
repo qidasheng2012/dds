@@ -79,23 +79,23 @@ CREATE TABLE `t_role_permission` (
 -- ----------------------------
 -- Records of t_role_permission
 -- ----------------------------
-INSERT INTO `t_role_permission` VALUES ('20', '1', '1', null, null);
-INSERT INTO `t_role_permission` VALUES ('21', '1', '2', null, null);
-INSERT INTO `t_role_permission` VALUES ('22', '1', '17', null, null);
-INSERT INTO `t_role_permission` VALUES ('23', '1', '18', null, null);
-INSERT INTO `t_role_permission` VALUES ('24', '1', '19', null, null);
-INSERT INTO `t_role_permission` VALUES ('25', '1', '20', null, null);
-INSERT INTO `t_role_permission` VALUES ('26', '1', '21', null, null);
-INSERT INTO `t_role_permission` VALUES ('27', '1', '3', null, null);
-INSERT INTO `t_role_permission` VALUES ('28', '1', '4', null, null);
-INSERT INTO `t_role_permission` VALUES ('29', '1', '10', null, null);
-INSERT INTO `t_role_permission` VALUES ('30', '1', '11', null, null);
-INSERT INTO `t_role_permission` VALUES ('31', '1', '12', null, null);
-INSERT INTO `t_role_permission` VALUES ('32', '2', '1', null, null);
-INSERT INTO `t_role_permission` VALUES ('33', '2', '2', null, null);
-INSERT INTO `t_role_permission` VALUES ('34', '2', '20', null, null);
-INSERT INTO `t_role_permission` VALUES ('35', '3', '5', null, null);
-INSERT INTO `t_role_permission` VALUES ('36', '3', '22', null, null);
+INSERT INTO `t_role_permission` VALUES ('1', '1', '1', null, null);
+INSERT INTO `t_role_permission` VALUES ('2', '1', '2', null, null);
+INSERT INTO `t_role_permission` VALUES ('3', '1', '17', null, null);
+INSERT INTO `t_role_permission` VALUES ('4', '1', '18', null, null);
+INSERT INTO `t_role_permission` VALUES ('5', '1', '19', null, null);
+INSERT INTO `t_role_permission` VALUES ('6', '1', '20', null, null);
+INSERT INTO `t_role_permission` VALUES ('7', '1', '21', null, null);
+INSERT INTO `t_role_permission` VALUES ('8', '1', '3', null, null);
+INSERT INTO `t_role_permission` VALUES ('9', '1', '4', null, null);
+INSERT INTO `t_role_permission` VALUES ('10', '1', '10', null, null);
+INSERT INTO `t_role_permission` VALUES ('11', '1', '11', null, null);
+INSERT INTO `t_role_permission` VALUES ('12', '1', '12', null, null);
+INSERT INTO `t_role_permission` VALUES ('13', '2', '1', null, null);
+INSERT INTO `t_role_permission` VALUES ('14', '2', '2', null, null);
+INSERT INTO `t_role_permission` VALUES ('15', '2', '20', null, null);
+INSERT INTO `t_role_permission` VALUES ('16', '3', '5', null, null);
+INSERT INTO `t_role_permission` VALUES ('17', '3', '22', null, null);
 
 -- ----------------------------
 -- Table structure for t_user

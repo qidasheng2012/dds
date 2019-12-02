@@ -18,9 +18,25 @@
         <result column="update_time" property="updateTime"/>
     </resultMap>
 
+    <sql id="BaseColumn">
+        id,
+        pid,
+        name,
+        type,
+        sort,
+        url,
+        perm_code,
+        icon,
+        description,
+        status,
+        create_time,
+        update_time
+    </sql>
+
     <!-- 查询父菜单 -->
     <select id="findParentMenu" resultMap="BaseResultMap">
-        SELECT *
+        SELECT
+          <include refid="BaseColumn"/>
         from t_permission
         WHERE id in
               (
@@ -41,7 +57,8 @@
 
     <!-- 查询子菜单 -->
     <select id="findSubMenu" resultMap="BaseResultMap">
-        SELECT *
+        SELECT
+          <include refid="BaseColumn"/>
         from t_permission
         WHERE id in
               (
@@ -62,7 +79,8 @@
     </select>
 
     <select id="findUserPermission" resultMap="BaseResultMap">
-        SELECT *
+        SELECT
+          <include refid="BaseColumn"/>
         from t_permission
         WHERE id in
               (
@@ -70,11 +88,11 @@
                   from t_role_permission
                   WHERE rid in
                         (
-                            select rid
-                            from t_user_role
-                                     INNER JOIN t_role on t_user_role.rid = t_role.id
-                            where uid = #{0}
-                              and status = 1
+                            select ur.rid
+                            from t_user_role as ur
+                            INNER JOIN t_role as r on ur.rid = r.id
+                            where ur.uid = #{uid}
+                              and r.status = 1
                         )
               )
           and status = 1
