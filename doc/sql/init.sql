@@ -117,7 +117,7 @@ CREATE TABLE `t_user` (
 -- ----------------------------
 -- Records of t_user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('1', 'root', 'root', '9b95430b2b1aa666dc9a10d2cca6ad9a', '1574681263821', 'root@163.com', '1', null, null);
+INSERT INTO `t_user` VALUES ('1', 'admin', 'admin', '9b95430b2b1aa666dc9a10d2cca6ad9a', '1574681263821', 'root@163.com', '1', null, null);
 
 -- ----------------------------
 -- Table structure for t_user_role
