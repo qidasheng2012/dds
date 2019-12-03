@@ -6,12 +6,15 @@ spring:
     suffix: .html
     request-context-attribute: request
     charset: UTF-8
-  aop:
-    proxy-target-class: true
+
   servlet:
     multipart:
       max-file-size: 10MB
       max-request-size: 10MB
+
+  aop:
+    proxy-target-class: true
+
   devtools:
     restart:
       enabled: true
