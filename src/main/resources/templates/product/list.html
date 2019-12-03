@@ -1,0 +1,379 @@
+<#include "/lib/lib.html">
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>产品管理</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="${request.contextPath}/favicon.ico">
+    <link href="${request.contextPath}/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="${request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="${request.contextPath}/css/animate.css" rel="stylesheet">
+    <link href="${request.contextPath}/css/style.css?v=4.1.0" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+    <link rel="stylesheet" href="${request.contextPath}/css/plugins/bootstrap-validator/bootstrapValidator.min.css">
+    <link href="${request.contextPath}/css/plugins/iCheck/custom.css" rel="stylesheet">
+    <!-- Latest compiled and minified CSS -->
+    <style>
+        .form-control:focus,
+        .single-line:focus {
+            border-color: #0e9aef !important;
+        }
+        .checkbox-inline {
+            line-height: 5px;
+        }
+    </style>
+</head>
+<body class="gray-bg">
+
+    <div class="wrapper wrapper-content">
+
+        <div class="ibox float-e-margins ibox-blue">
+            <div class="ibox-title">
+                <h5>产品管理</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="row row-lg">
+
+                    <div class="example" style="margin-top: -10px;">
+                        <div class="btn-group hidden-xs" id="toolbar" role="group">
+                            <button type="button" class="btn btn-outline btn-default" data-toggle="modal" data-target="#addModal">
+                                <i class="glyphicon glyphicon-plus" aria-hidden="true"></i>
+                                添加
+                            </button>
+                            <button type="button" class="btn btn-outline btn-default" id="updateButton">
+                                <i class="glyphicon glyphicon-pencil" aria-hidden="true"></i>
+                                修改
+                            </button>
+                            <button type="button" class="btn btn-outline btn-default" id="deleteButton">
+                                <i class="glyphicon glyphicon-trash" aria-hidden="true"></i>
+                                删除
+                            </button>
+                        </div>
+
+                        <table id="productTableEvents"></table>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <@modal "添加产品" "addModal" "addForm">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="productName" placeholder="请输入产品名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">价格</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="price" placeholder="请输入价格">
+            </div>
+        </div>
+    </@modal>
+
+    <@modal "修改产品" "updateModal" "updateForm">
+        <input type="hidden" name="id">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">产品名称</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="productName" placeholder="请输入产品名称">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">价格</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" name="price" placeholder="请输入价格">
+            </div>
+        </div>
+    </@modal>
+
+    <!-- 全局js -->
+    <script src="${request.contextPath}/js/jquery.min.js?v=2.1.4"></script>
+    <script src="${request.contextPath}/js/bootstrap.min.js?v=3.3.6"></script>
+    <!-- layer javascript -->
+    <script src="${request.contextPath}/js/plugins/layer/layer.min.js"></script>
+    <!-- 自定义js -->
+    <script src="${request.contextPath}/js/content.js?v=1.0.0"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+    <!-- Latest compiled and minified Locales -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="${request.contextPath}/js/plugins/bootstrap-validator/bootstrapValidator.js"></script>
+    <script src="${request.contextPath}/js/plugins/iCheck/icheck.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('.i-checks').iCheck({
+                checkboxClass: 'icheckbox_square-green',
+                radioClass: 'iradio_square-green',
+            });
+        });
+
+        //$("#addUserModal").modal();
+
+        $(function () {
+            $("#productTableEvents").bootstrapTable({
+                url: '/product/list',
+                method: 'get',
+                contentType: "application/x-www-form-urlencoded",
+                queryParamsType:'',//查询参数组织方式
+                queryParams:queryParams,//请求服务器时所传的参数
+                sidePagination:'server',//指定服务器端分页
+                search: true,
+                searchOnEnterKey: true,
+                pagination: true,
+                showRefresh: true,
+                showToggle: true,
+                showColumns: true,
+                striped: true,
+                pagination: true,
+                sortable: false,
+                sortOrder: "asc",
+                clickToSelect: true,
+                pageNumber:1,
+                pageSize: 10,
+                pageList: [1, 5, 10, 25, 50, 100, 'ALL'],
+                iconSize: 'outline',
+                toolbar: '#toolbar',
+                icons: {
+                    refresh: 'glyphicon-repeat',
+                    toggle: 'glyphicon-list-alt',
+                    columns: 'glyphicon-list'
+                },
+                responseHandler:function(res){
+                    //在ajax获取到数据，渲染表格之前，修改数据源
+                    return res;
+                },
+                columns: [
+                    {
+                        title:'全选',
+                        field:'select',
+                        //复选框
+                        checkbox:true,
+                        width:25,
+                        align:'center',
+                        valign:'middle'
+                    },
+                    {
+                        field: 'id',
+                        title: 'ID',
+                        align: 'center'
+                    },
+                    {
+                        field: 'productName',
+                        title: '产品名称',
+                        align: 'center'
+                    },
+                    {
+                        field: 'price',
+                        title: '价格',
+                        align: 'center'
+                    },
+                    {
+                        field: 'createTime',
+                        title: '创建时间',
+                        align: 'center',
+                        formatter:function(value,row,index){
+                            if (value == null) {
+                                return "";
+                            }
+                            return formatDateTime(value);
+                        }
+                    },
+                    {
+                        field: 'updateTime',
+                        title: '修改时间',
+                        align: 'center',
+                        formatter:function(value,row,index){
+                            if (value == null) {
+                                return "";
+                            }
+                            return formatDateTime(value);
+                        }
+                    },
+                ]
+            });
+
+            //请求服务数据时所传参数
+            function queryParams(params){
+                return{
+                    pageNumber: params.pageNumber,
+                    pageSize: params.pageSize,
+                    searchText: params.searchText
+                }
+            }
+
+            //添加用户
+            $('#addModal').on('show.bs.modal', function () {
+                $("#addForm").data('bootstrapValidator').destroy();
+                $('#addForm').data('bootstrapValidator', null);
+                addValidator();
+            });
+            addValidator();
+            function addValidator() {
+                $('#addForm').bootstrapValidator({
+                    fields: {
+                        productName: {
+                            validators: {
+                                notEmpty: {
+                                    message: '产品名称不能为空'
+                                },
+                                stringLength: {
+                                    max: 50,
+                                    message: '产品名称长度最多50个字符'
+                                },
+                            }
+                        },
+                        price: {
+                            validators: {
+                                notEmpty: {
+                                    message: '价格不能为空'
+                                },
+                                stringLength: {
+                                    max: 10,
+                                    message: '价格长度最多10个字符'
+                                },
+                            }
+                        }
+                    }
+                }).on('success.form.bv', function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: "/product/add",
+                        data:  $("#addForm").serialize(),
+                        type: "POST",
+                        dataType: 'json',
+                        success: function(data){
+                            $("#addModal").modal('hide');
+                            if (data.success) {
+                                $("#addModal").modal('hide');
+                                $("#addForm")[0].reset();
+                                $('#productTableEvents').bootstrapTable('refresh');
+                                parent.layer.msg(data.msg, {icon: 1});
+                            } else {
+                                parent.layer.msg(data.msg, {time: 1500, icon:5});
+                            }
+                        }
+                    });
+                });
+            }
+
+            //修改用户
+            $("#updateButton").click(function () {
+                var $result = $('#productTableEvents');
+                var list = $result.bootstrapTable('getSelections');
+                if (list.length <= 0 || list.length > 1) {
+                    parent.layer.msg('请选中一条数据', {time: 1500, icon:5});
+                    return;
+                }
+                list = list[0];
+                for (var item in list) {
+                    $("#updateModal input[name='"+item+"']").val(list[item]);
+                }
+                $("#updateForm").data('bootstrapValidator').destroy();
+                $('#updateForm').data('bootstrapValidator', null);
+                updateValidator();
+                $("#updateModal").modal("show");
+            });
+
+            updateValidator();
+            function updateValidator() {
+                $('#updateForm').bootstrapValidator({
+                    fields: {
+                        productName: {
+                            validators: {
+                                notEmpty: {
+                                    message: '产品名称不能为空'
+                                },
+                                stringLength: {
+                                    max: 50,
+                                    message: '产品名称长度最多50个字符'
+                                },
+                            }
+                        },
+                        price: {
+                            validators: {
+                                notEmpty: {
+                                    message: '价格不能为空'
+                                },
+                                stringLength: {
+                                    max: 10,
+                                    message: '价格长度最多30个字符'
+                                },
+                            }
+                        }
+                    }
+                }).on('success.form.bv', function(e) {
+                    e.preventDefault();
+                    $.ajax({
+                        url: "/product/update",
+                        data:  $("#updateForm").serialize(),
+                        type: "PUT",
+                        dataType: 'json',
+                        success: function(data){
+                            $("#updateModal").modal('hide');
+                            if (data.success) {
+                                $("#updateModal").modal('hide');
+                                $('#productTableEvents').bootstrapTable('refresh');
+                                parent.layer.msg(data.msg, {icon: 1});
+                            } else {
+                                parent.layer.msg(data.msg, {time: 1500, icon:5});
+                            }
+                        }
+                    });
+                });
+            }
+
+            //删除用户
+            $("#deleteButton").click(function () {
+                var $result = $('#productTableEvents');
+                var list = $result.bootstrapTable('getSelections');
+                if (list.length <= 0) {
+                    parent.layer.msg('请至少选中一条数据', {time: 1500, icon:5});
+                    return;
+                }
+                var ids = "";
+                for (var item in list) {
+                    ids += list[item].id+",";
+                }
+                parent.layer.confirm('确定删除选中产品？', {
+                    btn: ['确定','取消'], //按钮
+                    shade: false //不显示遮罩
+                }, function(){
+                    $.ajax({
+                        url: "/product/delete",
+                        data:  {"ids": ids},
+                        type: "DELETE",
+                        dataType: 'json',
+                        success: function(data){
+                            if (data.success) {
+                                $('#productTableEvents').bootstrapTable('refresh');
+                                parent.layer.msg(data.msg, {icon: 1});
+                            } else {
+                                parent.layer.msg(data.msg, {time: 1500, icon:5});
+                            }
+                        }
+                    });
+                });
+            });
+
+        });
+    </script>
+</body>
+</html>

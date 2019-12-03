@@ -73,6 +73,12 @@
             <artifactId>mybatis-plus-boot-starter</artifactId>
             <version>${mybatisPlus.version}</version>
         </dependency>
+        <!--代码生成器-->
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-generator</artifactId>
+            <version>${mybatisPlus.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
